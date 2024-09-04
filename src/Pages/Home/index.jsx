@@ -11,22 +11,50 @@ function Home() {
     const renderView = () => {
         if (filteredItems?.length > 0) {
             return (
-                filteredItems?.map(item => (
-                    <Card key={item.id} data={item} />
-                ))
+                <div className='grid gap-4 grid-cols-3 w-full max-w-screen-lg'>
+                    {
+                        filteredItems?.map(item => (
+
+                            <Card key={item.id} data={item} />
+                        ))
+                    }
+                </div>
+
             )
         } else {
             return (
                 <>
-                    <div
-                        role="alert"
-                        className="bg-blue-100 dark:bg-blue-900 border-l-4 border-blue-500 dark:border-blue-700 text-blue-900 dark:text-blue-100 p-2 rounded-lg flex items-center transition duration-300 ease-in-out hover:bg-blue-200 dark:hover:bg-blue-800 transform hover:scale-105"
-                    >
-                        <InformationCircleIcon className="h-5 w-5 flex-shrink-0 mr-2 text-blue-600" />
-                        <p className="text-xs font-semibold">
-                            Info - No se encontraron coincidencias.
-                        </p>
-                    </div>
+                    {filteredItems ?
+                        <>
+
+                            <div
+                                role="alert"
+                                className="bg-blue-100 dark:bg-blue-900 border-l-4 border-blue-500 dark:border-blue-700 text-blue-900 dark:text-blue-100 p-2 rounded-lg flex items-center transition duration-300 ease-in-out hover:bg-blue-200 dark:hover:bg-blue-800 transform hover:scale-105"
+                            >
+                                <InformationCircleIcon className="h-5 w-5 flex-shrink-0 mr-2 text-blue-600" />
+                                <p className="text-xs font-semibold">
+                                    Info - No se encontraron coincidencias.
+                                </p>
+                            </div>
+
+
+                        </>
+                        : <>
+                            <div className="w-full  flex justify-center items-center gap-x-4">
+                                <div
+                                    className="w-10 h-10 bg-[#d991c2] rounded-full animate-bounce"
+                                ></div>
+                                <div
+                                    className="w-10 h-10 bg-[#9869b8] rounded-full animate-bounce"
+                                ></div>
+                                <div
+                                    className="w-10 h-10 bg-[#6756cc] rounded-full animate-bounce"
+                                ></div>
+                            </div>
+
+                        </>
+                    }
+
                 </>
             )
         }
@@ -46,9 +74,9 @@ function Home() {
                     className="relative bg-transparent text-center ring-0 outline-none border border-neutral-500 text-neutral-900 placeholder-violet-700 text-sm rounded-lg focus:ring-violet-500 placeholder-opacity-60 focus:border-violet-500 block w-full p-4  checked:bg-emerald-500 "
                 />
             </div>
-            <div className='grid gap-4 grid-cols-3 w-full max-w-screen-lg'>
-                {renderView()}
-            </div>
+
+            {renderView()}
+
             <ProductDetail />
         </Layout>
     )
