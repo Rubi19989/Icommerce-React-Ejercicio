@@ -1,3 +1,3 @@
 # Icommerce-React-Ejercicio
 
-![Icommerce](img/shopi.png)
+![Icommerce](src/img/shopi.png)
